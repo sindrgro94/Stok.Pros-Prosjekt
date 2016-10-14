@@ -1,4 +1,4 @@
-function PI = MC_Simulation(n)
+function PI = oppg1b(n)
 % we want to simulate a MC of length n.
 %(Goes fast for n = 10^6)
 % define the transition probability matrix
