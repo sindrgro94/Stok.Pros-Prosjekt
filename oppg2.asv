@@ -5,23 +5,23 @@ alpha = zeros(n+1);
 P = zeros(n+1);
 Q = zeros(n+1);
 %Hele Q blir 0.5
-for i = 1:n+1
-    for j = 1:n+1
-        if Q(i,j) == 0
-            Q(i,j) = 1/2;
-        elseif abs(Q(i,j))< n
-            Q(i,j) = 1/2;
-        elseif Q(i,j)==n
-            Q(i,j) = 1/2;
-        else Q(i,j) = 0;
-        end
+for diag = 1:n+1
+    if diag == 1
+        Q(diag,diag) = 1/2;
+        Q(diag,diag+1) = 1/2;
+    elseif diag == n+1
+        Q(diag,diag) = 1/2;
+        Q(diag,diag-1) = 1/2;
+    else
+        Q(diag,diag-1) = 1/2;
+        Q(diag,diag+1) = 1/2;
     end
 end
-
+count = 0;
 for i = 0:n
     for j = 0:n
-        
-         alpha(i+1,j+1) = min(PIX(i,j,p)/PIX(j,i,p),1);
+        count = 1+count;
+         alpha(i+1,j+1) = min(PIX(n,j,p)/PIX(n,i,p),1);
     end
 end
 
