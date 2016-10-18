@@ -1,5 +1,5 @@
+%plot1b - (Want to show how the initial state loses it's influence)
 clear all
-%Want to show how the initial state loses it's influence
 numSteps = [10 100 1000];
 stateCount = zeros(3,3,3);
 %(initial state,percentage in each state, number of steps)
