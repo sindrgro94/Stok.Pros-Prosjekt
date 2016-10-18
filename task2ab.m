@@ -1,4 +1,4 @@
-function P = oppg2(n)
+function P = task2ab(n)
 PIX = @(n,x,p) nchoosek(n,x)*p^x*(1-p)^(n-x);
 p = 0.3;
 alpha = zeros(n+1);
