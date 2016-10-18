@@ -1,6 +1,5 @@
-function P = task2ab(n)
+function [Q,alpha,P] = task2ab(n,p)
 PIX = @(n,x,p) nchoosek(n,x)*p^x*(1-p)^(n-x);
-p = 0.3;
 alpha = zeros(n+1);
 P = zeros(n+1);
 Q = zeros(n+1);
@@ -16,7 +15,7 @@ for diag = 1:n+1
         Q(diag,diag+1) = 1/2;
     end
 end
-count = 0;
+
 for i = 0:n
     for j = 0:n
         if Q(i+1,j+1)~= 0
@@ -42,10 +41,6 @@ for i = 0:n
 
     end
 end
-
-A = P^5000;
-X = A(1,:);
-plot(0:n,X)
 
 
 
