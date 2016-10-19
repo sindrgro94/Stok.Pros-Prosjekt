@@ -1,0 +1,20 @@
+function plot2d()
+n = 20;
+p = 0.3;
+length = 5000;
+[MC,states] = task2c(n,p,length);
+stateCount = zeros(1,n+1);
+for state= 0:n
+    stateCount(state+1) = sum(states == state);
+end
+mean = sum(states)/length;
+variance = 0;
+for step = 1:5000
+    variance = variance + (states(step)-mean)^2;
+end
+variance = variance/(length-1);
+figure(1)
+hold on
+bar(0:n,stateCount);
+
+plot(x,y);
