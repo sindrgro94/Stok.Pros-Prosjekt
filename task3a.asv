@@ -50,9 +50,9 @@ tic
 % y(i) = cnt;
 % end
 %time = cumsum(x);
-y = zeros(1,1000000);
-cnt = 0;
-for i  = 1:1000000
+y = zeros(1,10000);
+cnt =
+for i  = 1:10000
     n = poissrnd(l*t);
     if n>200
         cnt = cnt+1;
@@ -63,7 +63,7 @@ Nt = 1:length(y);
 plot(Nt,y,'xr')
 ylim([0,250])
 hist(y,max(y)-min(y))
-Prob = cnt/length(y);
+Prob = n/length(y);
 fprintf('Rikitg mengde er P = %f.\nApproksimert mengde Z = %f.\nSimulert mengde er Prob = %f\n',...
     P,Z,Prob)
 toc
