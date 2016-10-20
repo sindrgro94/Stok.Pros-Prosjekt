@@ -9,8 +9,8 @@ function [P,Prob]= task3a()
     for i = 0:200
         if i<=160
             P = P+exp(log(l*t)*i-l*t)/factorial(i);
-         else
-            n = log(l*t*exp(1)/i)*i;
+        else %Stirling apprximation
+            n = log(l*t*exp(1)/i)*i; 
             P = P+exp(n-l*t)/sqrt(2*pi*i);
         end
     end
