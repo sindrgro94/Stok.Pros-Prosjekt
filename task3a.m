@@ -16,9 +16,9 @@ S = 10*1/l;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %SIMULERING AV PROSESS%
 
-y = zeros(1,1000000);
+y = zeros(1,10000);
 cnt = 0;
-for i  = 1:1000000
+for i  = 1:10000
     n = poissrnd(l*t);
     if n>200
         cnt = cnt+1;
