@@ -1,14 +1,9 @@
-function [P,Prob]= task3a()
+function [P,Prob, S, SimS]= task3a()
 lambda = 3;
 %The probability for more than 200 claims before March 1st
 
 t = 59;%days
 P = 1-poisscdf(200,lambda*t);
-%Funksjonen under er definert som P(x < X) normalfordeling 
-Z = 1-normcdf(200,177,sqrt(177)); % gir en approksimasjon på hva den kommer
-% til å bli
-
-
 %Expected waiting time Sn = SUM(Tn)
 %E[Tn] = 1/l
 S = 10*1/lambda;
@@ -25,36 +20,38 @@ SimS = sum(m)/length(m);
 
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %SIMULERING AV PROSESS%
 % Start P(N>200)
-y = zeros(1,10000);
+x = 0;
 cnt = 0;
 for i  = 1:10000
     n = poissrnd(lambda*t);
     if n>200
         cnt = cnt+1;
     end
-    y(i) = n;
+    x = x + n;
 end
-Prob = cnt/length(y);
+Prob = cnt/1000;
 % Slutt P(N>200)
 %Plot the processes Nb(t) for b = 1:100 as a funciton of time
 %Start Nb(t) b = 1:100
 t = 365;
 hold on
-for j = 1:100
+for j = 1:1000
     n = poissrnd(lambda*t);
     s = rand(1,n)*t;
     s = sort(s);
-    plot(s,[1:length(s)])
+    plot(s,1:length(s))
 end
-title('N^b(t) for b = 1, ..., 100')
+title('N^b(t) for b = 1, ..., 100 and \lambda(t) = 3')
 xlabel('Days')
 ylabel('Claims')
+set(gca,'fontsize',15)
 
 %Slutt Nb(t) b = 1:100
-fprintf('Rikitg mengde er P = %f.\nApproksimert mengde Z = %f.\nSimulert mengde er Prob = %f\n',...
-    P,Z,Prob)
+fprintf('Rikitg mengde er P = %f.\nSimulert mengde er Prob = %f\n',...
+    P,Prob)
 end
