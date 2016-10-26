@@ -41,20 +41,18 @@ end
 Prob = cnt/length(y);
 % Slutt P(N>200)
 %Plot the processes Nb(t) for b = 1:100 as a funciton of time
-%Start Nb(t) b = 1:100
+%Start Nb(t) 
 t = 365;
 hold on
 for j = 1:100
     n = poissrnd(lambda*t);
     s = rand(1,n)*t;
     s = sort(s);
+    y = zeros(1,365);
     plot(s,[1:length(s)])
 end
-title('N^b(t) for b = 1, ..., 100')
-xlabel('Days')
-ylabel('Claims')
 
-%Slutt Nb(t) b = 1:100
+%hist(y,max(y)-min(y))
 fprintf('Rikitg mengde er P = %f.\nApproksimert mengde Z = %f.\nSimulert mengde er Prob = %f\n',...
     P,Z,Prob)
 end
