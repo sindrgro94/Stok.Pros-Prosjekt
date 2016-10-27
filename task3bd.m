@@ -6,8 +6,8 @@ over200 = 0;
 figure
 hold on
 simulations = 10000;
-task3d1 = zeros(simulations,t*5);%event times for 1d
-task3d2 = zeros(simulations,floor(t*3));%event times for 1d
+task3d1 = zeros(simulations,t*6);%event times for 3d (1 = constant lambda)
+task3d2 = zeros(simulations,floor(t*6));%event times for 3d (2 = varying lambda)
 for j = 1:simulations
     n = poissrnd(lambda*t);
     s = rand(1,n)*t;
@@ -40,18 +40,31 @@ fprintf('P(N(t)>200) = %f\n',ProbOver200)
 %%%%%%%%%   task 3D:
 mu = -2;
 sigma = 1;
+alpha = 0.001;
 %Calculating the discount rates:
 task3d1 = exp(-alpha*task3d1);
 task3d2 = exp(-alpha*task3d2);
 D1 = zeros(simulations,1);
-D2 = zeros(simulations,1); 
+D2 = zeros(simulations,1);
 for j = 1:simulations
     i = 1;
-    while task3d1(j,i) ~= 1
+    while task3d1(j,i) ~= 1 || i == length(task3d1)+1
         D1(j) = D1(j) + exp(normrnd(mu,sigma))*task3d1(j,i);
+        i = i + 1;
+    end
+    i = 1;
+    while task3d2(j,i) ~=1 || i == length(task3d2)+1
         D2(j) = D2(j) + exp(normrnd(mu,sigma))*task3d2(j,i);
         i = i + 1;
     end
 end
+D1 = sort(D1);
+D2 = sort(D2);
+index = floor(simulations*0.95);% 95% of the simulations will have lower index
+fprintf('With lambda = 3 the company must hold %f million kroner',D1(index))
+fprintf(' to be 95 percent sure they have enough money to cover the claims \n \n')
 
+fprintf('With lambda = 2 + cos(t*pi/182.5) the company must hold %f',D2(index))
+fprintf(' million kroner to be 95 percent sure they have enough money')
+fprintf(' to cover the claims \n \n')
 end
