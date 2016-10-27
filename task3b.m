@@ -8,7 +8,7 @@ for j = 1:10000
     n = poissrnd(lambda*t);
     s = rand(1,n)*t;
     s = sort(s);
-    y = zeros(1,floor(t*2)); % Fungerer kunn for større t
+    y = zeros(1,floor(t*1.5)); % Fungerer kunn for større t
     cnt = 0;
 for i = 1:n %Thinning
     X = rand;
@@ -26,12 +26,12 @@ end
 ProbOver200 = over200/10000; % 1000 fra forløkken
 ret = length(y);
 xlim([0,t])
-title('N^b(t) for b = 1, ..., 100 and \lambda(t) = 2+cos(2\pit/180)')
+title('N^b(t) for b = 1, ..., 100 and \lambda(t) = 2+cos(\pit/180)')
 xlabel('Days')
 ylabel('Claims')
 set(gca,'fontsize',15)
 
 
-fprintf('P(N(t)>200) = %f\n',ProbOver200)
+fprintf('P(N(%i)>200) = %f\n',t,ProbOver200)
 
 end
