@@ -1,6 +1,6 @@
 function propToFunctional = task1d()
-P = [1,    0,    0,    0; %The Markov chain
-     0.05, 0.85, 0.10, 0; %(dead,very sick,sick,functional)
+P = [1,    0,    0,    0; %(dead,very sick,sick,functional)
+     0.05, 0.85, 0.10, 0; 
      0,    0.05, 0.65, 0.3;
      0,    0,    0,    1];
 n = 100; %number of "experiments"
@@ -45,7 +45,7 @@ for group = 1:10
    absorbedInGroup(group,2) = ...
        sum(absorbedState(1,(group-1)*numInGroup+1:group*numInGroup)==3);
 end
-%plot 4 different
+%plot ten groups:
 figure(1)
 bar(absorbedInGroup./numInGroup);
 xlabel('Group Number')
