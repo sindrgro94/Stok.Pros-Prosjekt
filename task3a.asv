@@ -9,15 +9,14 @@ P = 1-poisscdf(200,lambda*t);
 S = 10*1/lambda;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Simulering
-iterasjoner = 100000;
-m = zeros(1,iterasjoner);
-for i = 1:iterasjoner
-n = poissrnd(lambda*15);
-s = rand(1,n)*15;
+m = zeros(1,100000);
+for i = 1:100000
+n = poissrnd(lambda*10);
+s = rand(1,n)*10;
 s = sort(s);
 m(i) = s(10);
 end
-SimS = sum(m)/iterasjoner;
+SimS = sum(m)/length(m);
 
 
 
@@ -28,16 +27,14 @@ SimS = sum(m)/iterasjoner;
 % Start P(N>200)
 x = 0;
 cnt = 0;
-iterasjoner = 100000;
-for i  = 1:iterasjoner
+for i  = 1:10000
     n = poissrnd(lambda*t);
     if n>200
         cnt = cnt+1;
     end
     x = x + n;
 end
-Prob = cnt/iterasjoner;
-my = x/iterasjoner;
+Prob = cnt/1000;
 % Slutt P(N>200)
 %Plot the processes Nb(t) for b = 1:100 as a funciton of time
 %Start Nb(t) b = 1:100
@@ -47,7 +44,7 @@ for j = 1:100
     n = poissrnd(lambda*t);
     s = rand(1,n)*t;
     s = sort(s);
-    plot(s,1:length(s),'r')
+    plot(s,1:length(s))
 end
 xlim([0,t])
 title('N^b(t) for b = 1, ..., 100 and \lambda(t) = 3')

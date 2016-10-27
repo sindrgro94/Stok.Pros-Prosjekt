@@ -4,7 +4,7 @@ lambda_Var = @(time) 2+cos(time*pi/182.5);
 tot = 0;
 over200 = 0;
 hold on
-for j = 1:10000
+for j = 1:100
     n = poissrnd(lambda*t);
     s = rand(1,n)*t;
     s = sort(s);
@@ -21,7 +21,7 @@ if cnt > 200
     over200 = over200+1;
 end
 tot = length(y)+tot;
-plot(y,1:length(y))
+plot(y,1:length(y),'b')
 end
 ProbOver200 = over200/10000; % 1000 fra forløkken
 ret = length(y);
