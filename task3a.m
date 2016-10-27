@@ -40,12 +40,13 @@ Prob = cnt/1000;
 %Start Nb(t) b = 1:100
 t = 365;
 hold on
-for j = 1:1000
+for j = 1:100
     n = poissrnd(lambda*t);
     s = rand(1,n)*t;
     s = sort(s);
     plot(s,1:length(s))
 end
+xlim([0,t])
 title('N^b(t) for b = 1, ..., 100 and \lambda(t) = 3')
 xlabel('Days')
 ylabel('Claims')
