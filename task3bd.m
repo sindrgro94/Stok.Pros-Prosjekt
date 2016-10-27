@@ -1,4 +1,4 @@
-function ret = task3b(t)
+function ret = task3bd(t)
 lambda = 3;
 lambda_Var = @(time) 2+cos(time*pi/182.5);
 tot = 0;
