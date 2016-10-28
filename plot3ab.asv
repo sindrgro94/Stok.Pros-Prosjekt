@@ -40,7 +40,7 @@ end %thinning stop
 plot(y,1:length(y))
 end
 xlim([0,time])
-title('N^b(t) for b = 1, ..., 100 and \lambda(t) = 2+cos(\pit/182.5)')
+title('N^b(t) for b = 1, ..., 100 and \lambda(t) = 2+cos(\pit/180)')
 xlabel('Days')
 ylabel('Claims')
 set(gca,'fontsize',15)
