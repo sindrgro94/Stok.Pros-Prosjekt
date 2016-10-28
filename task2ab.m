@@ -1,8 +1,10 @@
 function [Q,alpha,P] = task2ab(n,p)
-PIX = @(n,x,p) nchoosek(n,x)*p^x*(1-p)^(n-x);
+PIX = @(n,x,p) nchoosek(n,x)*p^x*(1-p)^(n-x); %Binomial distrubtion function
+%Prealocating for alpha, P and Q
 alpha = zeros(n+1);
 P = zeros(n+1);
 Q = zeros(n+1);
+%Initializing Q
 for diag = 1:n+1
     if diag == 1
         Q(diag,diag) = 1/2;
@@ -16,6 +18,7 @@ for diag = 1:n+1
     end
 end
 
+%Initializing alpha
 for i = 0:n
     for j = 0:n
         if Q(i+1,j+1)~= 0
@@ -24,6 +27,7 @@ for i = 0:n
     end
 end
 
+%Creating P from Q and alpha
 for i = 0:n
     temp = 0;
     for j = 0:n
@@ -40,6 +44,8 @@ for i = 0:n
         end
 
     end
+end
+
 end
 
 
