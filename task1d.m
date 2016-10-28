@@ -45,6 +45,8 @@ for group = 1:10
    absorbedInGroup(group,2) = ...
        sum(absorbedState(1,(group-1)*numInGroup+1:group*numInGroup)==3);
 end
+
+
 %plot ten groups:
 figure(1)
 bar(absorbedInGroup./numInGroup);
@@ -53,6 +55,8 @@ ylabel('Percentage in absorbing state')
 legend('Dead','Functional')
 set(gca,'fontsize',15)
 ylim([0 1])
+
+
 %plot 4 different simulations
 figure(2)
 title('Variability in the stochastic process')
@@ -72,6 +76,7 @@ for fig = 1:4
     set(gca,'fontsize',15)
     xlabel('Step')
     ylabel('State')
+end
 end
 
 

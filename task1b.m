@@ -1,4 +1,4 @@
-function PI = oppg1b(n,initState)
+function PI = task1b(n,initState)
 % we want to simulate a MC of length n.
 P = [0.50, 0.35, 0.15;
      0.10, 0.75, 0.15;
