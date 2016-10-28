@@ -37,5 +37,5 @@ for step = 1:len
     end
     MC(step+1) = next;%ended up en prev this step
 end
-disp(acceptedStates);
+disp(acceptedStates/len);
 end
