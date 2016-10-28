@@ -25,7 +25,7 @@ SimS = sum(m)/iterations;
 
 x = 0; %Keeps track of all events through all the simulations. Used to estimate expected waiting time
 over200 = 0;%Increases by 1 if in the given time it occurs over 200 events
-iterations = 100000;
+iterations = 100;
 for i  = 1:iterations
     n = poissrnd(lambda*t);
     if n>200
@@ -35,6 +35,7 @@ for i  = 1:iterations
 end
 Prob = over200/iterations; %P(N(t)>200)
 my = x/iterations; %E[N(t)]
+fprintf('Estimert antall innkaseringer for %i dager er %3.2f \n',t,my)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -54,6 +55,5 @@ ylabel('Claims')
 set(gca,'fontsize',15)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-fprintf('Rikitg mengde er P = %f.\nSimulert mengde er Prob = %f\n',...
-    P,Prob)
+fprintf('Rikitg sannsynlighet er P = %f.\nEstimert sannsynlighet er Prob = %f\n',P,Prob)
 end
