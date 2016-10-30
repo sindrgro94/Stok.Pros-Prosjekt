@@ -6,10 +6,10 @@ stateCount = zeros(3,3,3);
 %(initial state,percentage in each state, number of steps)
 for steps = 1:3
     for initState=1:3
-        stateCount(initState,:,steps) = transpose(oppg1b(numSteps(steps),initState-1));
+        stateCount(initState,:,steps) = transpose(task1b(numSteps(steps),initState-1));
     end
 end
-figure(1)
+h = figure(1)
 titles = {'Steps=10','Steps=100','Steps=1000','Stationary distribution'};
 for steps = 1:4
     subplot(2,2,steps);
@@ -22,7 +22,8 @@ for steps = 1:4
         title(titles{steps},'fontsize',15);
     end
    xlabel('Initial state');
-   ylabel('% of time in state')
+   ylabel('Proportion of time in state')
    set(gca,'fontsize',15)
 end
 legend('State = 0','State = 1','State = 2');
+saveTightFigurenr2(h,'histogram')
