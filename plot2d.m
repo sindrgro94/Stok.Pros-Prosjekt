@@ -1,7 +1,7 @@
 function plot2d()
 n = 20;
 p = 0.3;
-len = 5000;
+len = 100000;
 MC = task2c(n,p,len);
 %plot the Markov chain
 figure(1)

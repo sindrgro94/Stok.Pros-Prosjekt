@@ -1,8 +1,9 @@
 function ret= task3b(t)
 lambda = 3; %maximum value of lambda
 lambda_Var = @(time) 2+cos(time*pi/182.5);
-iterations = 100;
+iterations = 1000;
 over200 = 0; %Increases by 1 if in the given time it occurs over 200 events
+tot = 0;
 hold on
 for j = 1:iterations
     n = poissrnd(lambda*t);
@@ -20,6 +21,7 @@ end %thinning stop
 if cnt > 200
     over200 = over200+1;
 end
+tot = tot+cnt;
 plot(y,1:length(y))
 end
 xlim([0,t])
@@ -29,5 +31,5 @@ ylabel('Claims')
 set(gca,'fontsize',15)
 
 ProbOver200 = over200/iterations;%P(N(t)>200)
-ret = length(y); % of events after thinning 
+ret = tot/iterations; % average number of events after thinning 
 end
